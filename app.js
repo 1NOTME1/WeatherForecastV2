@@ -60,44 +60,44 @@ app.post("/", (req, res) => {
     });
 });
 
-app.post('/', function (req, res) {
-    https.get(urlFiveDaysWeather, (r) => {
-        console.log(r.statusCode);
-        r.on("data1", function (data1) {
-            let weatherData1 = JSON.parse(JSON.stringify(data1))
-            console.log(weatherData1.list[1].main.humidity)
-            //////////////////////////////////////5 Days Weather//////////////////////////////////
-            const hhh= weatherData1.list[0].main.humidity;
-            const pressure = weatherData1.list[0].main.pressure;
-            const wind = Math.round(weatherData1.wind.speed);
-            const realTemp = Math.round(weatherData1.main.feels_like);
-            const minTemp = Math.round(weatherData1.main.temp_min);
-            const maxTemp = Math.round(weatherData1.main.temp_max);
-            const country = weatherData1.sys.country;
-            const city = weatherData1.name;
-            const temp = Math.round(weatherData1.main.temp);
-            const desc = weatherData1.weather[0].description;
-            const imageIcon = weatherData1.weather[0].icon;
-            const imageURL = "http://openweathermap.org/img/wn/" + imageIcon + "@2x.png";
-            res.render('index', {
-                pressure: pressure,
-                hhh: hhh,
-                wind: wind,
-                minTemp: minTemp,
-                maxTemp: maxTemp,
-                realTemp: realTemp,
-                temp: temp,
-                query: query,
-                desc: desc,
-                imageURL: imageURL,
-                imageIcon: imageIcon,
-                country: country,
-                city: city,
-            });
-            res.send();
-        });
+// app.post('/', function (req, res) {
+//     https.get(urlFiveDaysWeather, (r) => {
+//         console.log(r.statusCode);
+//         r.on("data1", function (data1) {
+//             let weatherData1 = JSON.parse(JSON.stringify(data1))
+//             console.log(weatherData1.list[1].main.humidity)
+//             //////////////////////////////////////5 Days Weather//////////////////////////////////
+//             const hhh= weatherData1.list[0].main.humidity;
+//             const pressure = weatherData1.list[0].main.pressure;
+//             const wind = Math.round(weatherData1.wind.speed);
+//             const realTemp = Math.round(weatherData1.main.feels_like);
+//             const minTemp = Math.round(weatherData1.main.temp_min);
+//             const maxTemp = Math.round(weatherData1.main.temp_max);
+//             const country = weatherData1.sys.country;
+//             const city = weatherData1.name;
+//             const temp = Math.round(weatherData1.main.temp);
+//             const desc = weatherData1.weather[0].description;
+//             const imageIcon = weatherData1.weather[0].icon;
+//             const imageURL = "http://openweathermap.org/img/wn/" + imageIcon + "@2x.png";
+//             res.render('index', {
+//                 pressure: pressure,
+//                 hhh: hhh,
+//                 wind: wind,
+//                 minTemp: minTemp,
+//                 maxTemp: maxTemp,
+//                 realTemp: realTemp,
+//                 temp: temp,
+//                 query: query,
+//                 desc: desc,
+//                 imageURL: imageURL,
+//                 imageIcon: imageIcon,
+//                 country: country,
+//                 city: city,
+//             });
+//             res.send();
+//         });
 
-    });
+//     });
 });
 
 app.listen(port, () => {
