@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 
 app.post("/", (req, res) => {
     var query = req.body.city;
-    const keyAPI = "ccca97824ceff753759e67c16d193ce2";
+    const keyAPI = "---";
     const units = "metric";
     const urlCurrntlyWeather = "https://api.openweathermap.org/data/2.5/weather?q=" + query + "&appid=" + keyAPI + "&units=" + units + "";
     const urlFiveDaysWeather = "https://api.openweathermap.org/data/2.5/forecast?q=" + query + "&appid=" + keyAPI + "&units=" + units + "";
